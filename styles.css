@@ -1,0 +1,9 @@
+.battleImage {
+  width: 320px;
+  height: 180px;
+  background: center / contain no-repeat url("battle-image.jpg");
+}
+
+.hidden {
+  display: none;
+}

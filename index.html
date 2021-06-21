@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Epic Battle!</title>
+  </head>
+
+  <body>
+    <h1>
+      Epic Battle!
+    </h1>
+    <div class="imageContainer">
+      <div class="battleImage"></div>
+    </div>
+    <div id="introContent">
+      <p>
+        Are you ready to build the ultimate battle?  Enter the name of a hero and villain, then choose their health and power values.  When you're ready, press the button to begin!
+      </p>
+      <form id="buildBattleForm">
+        <h2>
+          Build the Battle
+        </h2>
+        <div class="heroInfo">
+          <h3>Our Hero</h3>
+          <label for="heroName">
+            Name
+          </label>
+          <input
+            id="heroName"
+            name="heroName"
+            type="text"
+            placeholder="Choose a name for the hero."
+            required
+          />
+          <label for="heroHealth">
+            Health
+          </label>
+          <input
+            id="heroHealth"
+            name="heroHealth"
+            type="number"
+            placeholder="What is the hero's health?"
+            required
+          />
+          <label for="heroPower">
+            Power
+          </label>
+          <input
+            id="heroPower"
+            name="heroPower"
+            type="number"
+            placeholder="What is the hero's power level?"
+            required=""
+          />
+        </div>
+        <div class="villainInfo">
+          <h3>The Villain</h3>
+          <label for="villainName">
+            Name
+          </label>
+          <input
+            id="villainName"
+            name="villainName"
+            type="text"
+            placeholder="Choose a name for the villain."
+            required
+          />
+          <label for="villainHealth">
+            Health
+          </label>
+          <input
+            id="villainHealth"
+            name="villainHealth"
+            type="number"
+            placeholder="What is the villain's health?"
+            required
+          />
+          <label for="villainPower">
+            Power
+          </label>
+          <input
+            id="villainPower"
+            name="villainPower"
+            type="number"
+            placeholder="What is the villain's power level?"
+            required
+          />
+        </div>
+        <button type="submit">
+          Begin Battle
+        </button>
+      </form>
+    </div>
+    <div id="battleContent" class="hidden">
+      <h2 id="battleTitle"></h2>
+      <p id="roundNumber"></p>
+      <div id="roundDescription"></div>
+      <button type="button" id="battleButton"></button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+
+</html>
