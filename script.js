@@ -24,19 +24,19 @@ function buildBattle(event) {
   // Prevent default refresh of app
   event.preventDefault();
   // Acquire user input from form
-  const heroName = document.getElementById("heroName").value.trim();
+  const heroName = document.getElementById("heroName").value;
   const heroHealth = document.getElementById("heroHealth").value;
   const heroPower = document.getElementById("heroPower").value;
-  const villainName = document.getElementById("villainName").value.trim();
+  const villainName = document.getElementById("villainName").value;
   const villainHealth = document.getElementById("villainHealth").value;
   const villainPower = document.getElementById("villainPower").value;
   // Add values to hero and villain objects
-  hero.name = heroName.value.trim();
-  hero.health = parseInt(heroHealth.value); // Convert to integer
-  hero.power = parseInt(heroPower.value); // Convert to integer
-  villain.name = villainName.value.trim();
-  villain.health = parseInt(villainHealth.value); // Convert to integer
-  villain.power = parseInt(villainPower.value); // Convert to integer
+  hero.name = heroName.trim();
+  hero.health = parseInt(heroHealth); // Convert to integer
+  hero.power = parseInt(heroPower); // Convert to integer
+  villain.name = villainName.trim();
+  villain.health = parseInt(villainHealth); // Convert to integer
+  villain.power = parseInt(villainPower); // Convert to integer
   // Clear the form
   heroName.value = "";
   // Determine the title
@@ -48,7 +48,8 @@ function buildBattle(event) {
   battleContent.classList.remove("hidden");
   // Clear the form
   buildBattleForm.reset();
-  // TODO: Need to build battle round processor function
+  // Process round one
+  battleRound();
 }
 
 // Add handler to form
@@ -60,7 +61,8 @@ function battleRound() {
   // Add round to the UI
   document.getElementById("roundNumber").innerText = `Round ${roundNum}`;
   // Build round description
-  const roundDescription = document.getElementById("roundDescription");
+  const roundDescription = document.getElementById("roundDescription"); // DIV element
+  roundDescription.innerHTML = ""; // Wipe out existing HTML
   const introParagraph = document.createElement('p');
   let introText = "";
   if (roundNum === 1) {
@@ -86,11 +88,11 @@ function battleRound() {
   const descText2 = `${hero.name} has ${hero.health} health.  ${villain.name} has ${villain.health}.`;
   let finalText = "";
   if (hero.health === 0 && villain.health > 0) {
-    finalText = `Oh, no!  ${villian.name} has defeated ${hero.name} in locked battle.  How can this be?`;
-  } else if (hero.health > 0 && villian.health === 0) {
-    finalText = `HAH!  ${hero.name} has defeated ${villian.name} in fair combat.  Let THAT be a lesson for you, evil!`;
-  } else if (hero.health === 0 && villian.health === 0) {
-    finalText = `SO. EPIC.  ${hero.name} and ${villian.name} collapse in the throes of combat.  That's the end!`;
+    finalText = `Oh, no!  ${villain.name} has defeated ${hero.name} in locked battle.  How can this be?`;
+  } else if (hero.health > 0 && villain.health === 0) {
+    finalText = `HAH!  ${hero.name} has defeated ${villain.name} in fair combat.  Let THAT be a lesson for you, evil!`;
+  } else if (hero.health === 0 && villain.health === 0) {
+    finalText = `SO. EPIC.  ${hero.name} and ${villain.name} collapse in the throes of combat.  That's the end!`;
   }
   // Dump paragraphs to battle description
   const descParagraph1 = document.createElement('p');
@@ -114,7 +116,6 @@ function battleRound() {
     finalParagraph.innerText = finalText;
     roundDescription.appendChild(finalParagraph);
     // Hide the cancel button
-    const cancelButton = document.getElementById("cancelButton");
     cancelButton.classList.add("hidden");
     // Update battle button
     battleButton.innerText = "Done";
@@ -131,10 +132,30 @@ function determineDamage(maxDamage) {
 
 // Build a handler for the cancel battle button
 function handleCancel() {
-  // TODO: Write this function
+  if (window.confirm("Cancel the battle?  Are you sure?")) {
+    // Reset the app
+    reset();
+  }
 }
+
+// Add handler to cancel button
+const cancelButton = document.getElementById("cancelButton");
+cancelButton.onclick = handleCancel;
 
 // Build a function that will reset the battle app
 function reset() {
-  // TODO: Write this function
+  // Reset data to default values
+  hero.name = "";
+  hero.health = 0;
+  hero.power = 0;
+
+  villain.name = "";
+  villain.health = 0;
+  villain.power = 0;
+  
+  roundNum = 0;
+
+  // Switch back to intro
+  introContent.classList.remove("hidden");
+  battleContent.classList.add("hidden");
 }
