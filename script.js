@@ -1,13 +1,13 @@
 // Initial values
 const hero = {
   name: "",
-  strength: 0,
+  health: 0,
   power: 0
 };
 
 const villain = {
   name: "",
-  strength: 0,
+  health: 0,
   power: 0
 };
 
@@ -25,17 +25,17 @@ function buildBattle(event) {
   event.preventDefault();
   // Acquire user input from form
   const heroName = document.getElementById("heroName").value.trim();
-  const heroStrength = document.getElementById("heroStrength").value;
+  const heroHealth = document.getElementById("heroHealth").value;
   const heroPower = document.getElementById("heroPower").value;
   const villainName = document.getElementById("villainName").value.trim();
-  const villainStrength = document.getElementById("villainStrength").value;
+  const villainHealth = document.getElementById("villainHealth").value;
   const villainPower = document.getElementById("villainPower").value;
   // Add values to hero and villain objects
   hero.name = heroName.value.trim();
-  hero.strength = parseInt(heroStrength.value); // Convert to number
+  hero.health = parseInt(heroHealth.value); // Convert to number
   hero.power = parseInt(heroPower.value); // Convert to number
   villain.name = villainName.value.trim();
-  villain.strength = parseInt(villainStrength.value); // Convert to number
+  villain.health = parseInt(villainHealth.value); // Convert to number
   villain.power = parseInt(villainPower.value); // Convert to number
   // Clear the form
   heroName.value = "";
@@ -50,3 +50,8 @@ function buildBattle(event) {
 // Add handler to form
 const buildBattleForm = document.getElementById("buildBattleForm");
 buildBattleForm.onsubmit = buildBattle;
+
+// Build a function that will process a round of battle
+function battleRound() {
+
+}
