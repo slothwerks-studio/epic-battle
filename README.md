@@ -5,7 +5,7 @@
 
 This is a simple web app built with HTML, CSS, and JavsScript.  The HTML consists of a header image and a form used to select some initial values such as the names, health, and "power" of the hero and villian.  Once the battle is initiated, the UI displays the status of the battle on a round-by-round basis; a button allows the user to move the battle forward.  Ultimately a winner is determined and the user is encouraged to play again.
 
-This public codebase was intentionally created to allow beginner programmers to learn how to code. It is also intentionally unfinished (see Improvements).
+This public codebase was intentionally created to allow beginner programmers to learn how to code. It is also intentionally unfinished (see [Improvements](https://github.com/slothwerks-studio/epic-battle/blob/main/README.md#improvements)).
 
 ### Live preview
 Want to try out the code?  Check out this [live preview](https://slothwerks-studio.github.io/epic-battle/).
